@@ -38,10 +38,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const ChatItem = () => {
+const ChatItem = ({ name, onClick }: { name: string; onClick: () => void }) => {
   return (
     <>
-      <ListItem>
+      <ListItem
+        onClick={onClick}
+        sx={{ overflowX: "hidden", cursor: "pointer" }}
+      >
         <ListItem>
           <ListItemAvatar>
             <StyledBadge
@@ -54,7 +57,7 @@ const ChatItem = () => {
               </Avatar>
             </StyledBadge>
           </ListItemAvatar>
-          <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+          <ListItemText sx={{ textTransform: "capital ize" }} primary={name} />
         </ListItem>
       </ListItem>
       <Divider></Divider>
